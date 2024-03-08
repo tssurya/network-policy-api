@@ -61,8 +61,6 @@ var (
 		),
 		ExtendedFeatures: sets.New(
 			SupportAdminNetworkPolicyNamedPorts,
-			SupportAdminNetworkPolicySameLabels,
-			SupportAdminNetworkPolicyNotSameLabels,
 		),
 	}
 
@@ -74,8 +72,6 @@ var (
 		),
 		ExtendedFeatures: sets.New(
 			SupportBaselineAdminNetworkPolicyNamedPorts,
-			SupportBaselineAdminNetworkPolicySameLabels,
-			SupportBaselineAdminNetworkPolicyNotSameLabels,
 		),
 	}
 )

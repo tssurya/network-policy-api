@@ -38,7 +38,7 @@ const (
 )
 
 // CoreFeatures are the features that are required to be conformant with
-// the Core API features (e.g. all fields in the API except for NamedPorts, SameLabels, NotSameLabels).
+// the Core API features (e.g. all fields in the API except for NamedPorts).
 var CoreFeatures = sets.New(
 	SupportAdminNetworkPolicy,
 	SupportBaselineAdminNetworkPolicy,
@@ -49,25 +49,17 @@ var CoreFeatures = sets.New(
 // -----------------------------------------------------------------------------
 
 const (
-	// This option indicates AdminNetworkPolicy's NamedPorts, SameLabels and NotSameLabels
+	// This option indicates AdminNetworkPolicy's NamedPorts
 	// fall under the extended test conformance.
 	SupportAdminNetworkPolicyNamedPorts            SupportedFeature = "AdminNetworkPolicyNamedPorts"
-	SupportAdminNetworkPolicySameLabels            SupportedFeature = "AdminNetworkPolicySameLabels"
-	SupportAdminNetworkPolicyNotSameLabels         SupportedFeature = "AdminNetworkPolicyNotSameLabels"
 	SupportBaselineAdminNetworkPolicyNamedPorts    SupportedFeature = "BaselineAdminNetworkPolicyNamedPorts"
-	SupportBaselineAdminNetworkPolicySameLabels    SupportedFeature = "BaselineAdminNetworkPolicySameLabels"
-	SupportBaselineAdminNetworkPolicyNotSameLabels SupportedFeature = "BaselineAdminNetworkPolicyNotSameLabels"
 )
 
 // ExtendedFeatures are extra generic features that implementations may
 // choose to support as an opt-in.
 var ExtendedFeatures = sets.New(
 	SupportAdminNetworkPolicyNamedPorts,
-	SupportAdminNetworkPolicySameLabels,
-	SupportAdminNetworkPolicyNotSameLabels,
 	SupportBaselineAdminNetworkPolicyNamedPorts,
-	SupportBaselineAdminNetworkPolicySameLabels,
-	SupportBaselineAdminNetworkPolicyNotSameLabels,
 ).Insert(CoreFeatures.UnsortedList()...)
 
 // -----------------------------------------------------------------------------
