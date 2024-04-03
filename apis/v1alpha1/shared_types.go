@@ -199,8 +199,7 @@ type AdminNetworkPolicyEgressPeer struct {
 }
 
 // CIDR is an IP address range in CIDR notation (for example, "10.0.0.0/8" or "fd00::/8").
-// This string must be validated by implementations using net.ParseCIDR
-// TODO: Introduce CEL CIDR validation regex isCIDR() in Kube 1.31 when it is available.
+// +kubebuilder:validation:XValidation:rule="isCIDR(self)",message="Invalid CIDR format provided"
 // +kubebuilder:validation:XValidation:rule="self.contains(':') != self.contains('.')",message="CIDR must be either an IPv4 or IPv6 address. IPv4 address embedded in IPv6 addresses are not supported"
 // +kubebuilder:validation:MaxLength=43
 type CIDR string
