@@ -18,15 +18,17 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-readonly VERSION="v1.64.7"
+readonly VERSION="v1.64.8"
 KUBE_ROOT=$(dirname "${BASH_SOURCE[0]}")/..
 readonly KUBE_ROOT
 
 cd "${KUBE_ROOT}"
 
 # See configuration file in ${KUBE_ROOT}/.golangci.yml.
+# Pin install script to the same tag instead of master/main, which now serves
+# the v2 installer and may break v1 config compatibility or change behavior.
 echo "Installing golangci-lint..."
-curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -s "$VERSION"
+curl -sfL "https://raw.githubusercontent.com/golangci/golangci-lint/${VERSION}/install.sh" | sh -s "$VERSION"
 
 echo "Running golangci-lint..."
 ./bin/golangci-lint run --timeout=10m
